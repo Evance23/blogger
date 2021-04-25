@@ -5,7 +5,8 @@ from app import app
 # Views
 @app.route('/')
 def index():
-    return render_template('index.html')
+    title = 'Home- Making the minute count'
+    return render_template('index.html', title = title)
 
 @app.route('/navbar.html')
 def navbar():
