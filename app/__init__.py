@@ -1,5 +1,5 @@
 from flask import Flask
-from app import views
+import views
 # from .config import DevConfig
 
 
