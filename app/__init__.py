@@ -1,7 +1,9 @@
 from flask import Flask
 from app import views
+from app import error 
 from flask_bootstrap import Bootstrap 
 from .config import DevConfig
+
 
 
 # # initializing application
