@@ -8,9 +8,14 @@ def index():
     title = 'Home- Making the minute count'
     return render_template('index.html', title = title)
 
-@app.route('/navbar.html')
-def navbar():
-    return render_template('navbar')
+# @app.route('/navbar.html')
+# def navbar():
+#     return render_template('navbar')
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Log In', form=form)
 
 @app.route('/profile.html')
 def profie():
