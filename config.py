@@ -1,7 +1,9 @@
+import os
+
 class Config:
-    '''
-    General configuration parent class
-    '''
+      debug = True
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+   
     pass
 
 
