@@ -1,7 +1,15 @@
 
 from flask import render_template, flash, redirect, url_for
 from app import app
-from app.form import LoginForm
+from . import auth
+
+
+from flask_login import login_user, logout_user ,login_required
+from ..models import User
+
+from .forms import RegistrationForm
+from .. import db
+from ..email import mail_message
 
 # Views
 
@@ -16,13 +24,25 @@ def index():
 #     return render_template('navbar')
 
 
-@app.route('/login' methods=['GET', 'POST'])
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        # flash('User Log in {}, remember_me{} .format(form.username.data, form.remmeber_me.data)
-        return redirect('/index')
-    # return render_template('login.html', title='Log In', form=form)
+    if request.method == 'POST':
+        form = request.form
+        username = form.get('username')
+        password = form.get('password')
+        print(username)
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            error = 'A user with that username  does not exist'
+            return render_template('login.html', error=error)
+        is_correct_password = user.check_password(password)
+        print(is_correct_password)
+        if not is_correct_password:
+            error = 'A user with that password does not exist'
+            return render_template('login.html', error=error)
+        login_user(user)
+        return redirect('/')
+    return render_template('login.html')
 
 
 @ app.route('/profile.html')
