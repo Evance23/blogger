@@ -3,6 +3,10 @@ from .config import DevConfig
 from app import views
 from app import error 
 from flask_bootstrap import Bootstrap 
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
+
 
 
 
