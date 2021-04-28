@@ -2,11 +2,12 @@ import os
 
 
 class Config:
-      debug = True
-SECRET_KEY = os.environ.get('SECRET_KEY')
-   
-    pass
+    debug = True
 
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+pass
 
 
 class ProdConfig(Config):
