@@ -1,8 +1,9 @@
 from flask import Flask
+from .config import DevConfig
 from app import views
 from app import error 
 from flask_bootstrap import Bootstrap 
-from .config import DevConfig
+
 
 
 
