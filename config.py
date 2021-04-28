@@ -3,7 +3,7 @@ import os
 
 class Config:
       debug = True
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'i-am-beast'
+SECRET_KEY = os.environ.get('SECRET_KEY')
    
     pass
 
