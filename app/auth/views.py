@@ -53,7 +53,7 @@ def signup():
         password = form.get("password")
         confirm_password = form.get("confirm_password")
         if username is None or password is None or email is None or confirm_password is None:
-            error = 'username, email, password are required'
+            error = 'Fill all the spaces'
             return render_template('signup.html', error=error)
         if ' ' in username:
             error = 'Username should not contain spaces'
@@ -64,16 +64,15 @@ def signup():
         else:
             user = User.query.filter_by(username=username).first()
             if user is not None:
-                error = 'A user with that name already exists'
+                error = 'User already exists'
                 return render_template('signup.html', error=error)
             user = User.query.filter_by(email=email).first()
             if user is not None:
-                error = 'A user with that email already exists'
+                error = 'Email already registered'
                 return render_template('signup.html', error=error)
             user = User(username=username, email=email)
             user.set_password(password)
             user.save()
-            # email_message("Welcome to 1m Pitch", "email/howdy", user.email, user=user)
             return redirect(url_for('auth.login'))
 
     return render_template('signup.html')
