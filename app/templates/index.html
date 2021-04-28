@@ -13,44 +13,47 @@
     {% endif %}
     <!-- Styles block -->
 
-{% block styles%}
-{{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-{% endblock %}
-<!-- Content block -->
+    {% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    {% endblock %}
+    <!-- Content block -->
 </head>
+
 <body>
 
     {% block content %}
     {% block styles %}
-        <h1>The Art of Pitching</h1>
-    <p>Communication is the key to all relationships and the <br> 
+    <h1>The Art of Pitching</h1>
+    <p>Communication is the key to all relationships and the <br>
         ability to interact with others is embeded in the clarity of our communication</p>
-            <p> The goal is to say the most using  tyyhe least amount of time</p>
-            <p> Human concetration remains a slippery slope and knowing how to do the one-minute pitch <br>should be the trick that everyone needs</p>
-            
-            <hr>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            {% endwith %}
-            {% block content %}{% endblock %}
+    <p> The goal is to say the most using the least amount of time</p>
+    <p> Human concetration remains a slippery slope and knowing how to do the one-minute pitch <br>should be the trick
+        that everyone needs</p>
 
-            <li><a href="/new_post">
-                <span>New Pitch</span>
-                <div class="liquid"></div>
-              </a>
-            <br>
-              <a href="/posts">
-                <span>View Pitch</span>
-                <div class="liquid"></div>
-              </a>
-              { %endblock% }
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+
+    <li><a href="/new_post">
+            <span>New Pitch</span>
+            <div class="liquid"></div>
+        </a>
+        <br>
+        <a href="/posts">
+            <span>View Pitch</span>
+            <div class="liquid"></div>
+        </a>
+        { %endblock% }
 
 </body>
+
 </html>

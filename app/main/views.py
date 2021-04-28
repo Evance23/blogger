@@ -24,17 +24,21 @@ def login():
         return redirect('/index')
     # return render_template('login.html', title='Log In', form=form)
 
+
 @ app.route('/profile.html')
 def profie():
     return ender_template('profile.html')
+
 
 @ app.route('/signup.html')
 def signup():
     return render_template('signup.html')
 
+
 @ app.route('/comment.html')
 def comment():
     return render_template('comment.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

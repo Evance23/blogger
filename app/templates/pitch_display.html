@@ -1,11 +1,11 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% from 'pitch_display_macro.html' import display_pitches%}
-{% block styles %} 
+{% block styles %}
 
 {{super()}}
-{%endblock%} 
-{% block content %} 
+{%endblock%}
+{% block content %}
 <div>{{ display_pitches(posts) }}</div>
 <div class="">{{display_comment(comment)}}</div>
 
-{% endblock} 
+{% endblock}
