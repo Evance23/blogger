@@ -1,6 +1,6 @@
 
 from flask import render_template, flash, redirect, url_for
-from app import app
+from app import *
 from . import auth
 
 
@@ -45,9 +45,9 @@ def login():
     return render_template('login.html')
 
     @auth.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.method == 'POST':
-        form = request.form
+    def signup():
+        if request.method == 'POST':
+            form = request.form
         username = form.get("username")
         email = form.get("email")
         password = form.get("password")
@@ -74,7 +74,6 @@ def signup():
             user.set_password(password)
             user.save()
             return redirect(url_for('auth.login'))
-
     return render_template('signup.html')
 
 
