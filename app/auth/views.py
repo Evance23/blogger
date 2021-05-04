@@ -1,16 +1,22 @@
+# from flask_mail import mail_message
+# from flask import render_template, flash, redirect, url_for
+# from app import *
+# from . import auth
 
-from flask import render_template, flash, redirect, url_for
-from app import *
+
+# from flask_login import login_user, logout_user, login_required
+# from ..models import User
+
+# from .forms import RegistrationForm
+# from .. import db
+
+from flask import render_template,url_for, flash,redirect,request
 from . import auth
-
-
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user ,login_required
 from ..models import User
-
-from .forms import RegistrationForm
 from .. import db
 from ..email import mail_message
-
+from .forms import RegForm,LoginForm
 # Views
 
 
