@@ -1,14 +1,3 @@
-# from flask_mail import mail_message
-# from flask import render_template, flash, redirect, url_for
-# from app import *
-# from . import auth
-
-
-# from flask_login import login_user, logout_user, login_required
-# from ..models import User
-
-# from .forms import RegistrationForm
-# from .. import db
 
 from flask import render_template,url_for, flash,redirect,request
 from . import auth
@@ -50,8 +39,8 @@ def login():
         return redirect('/')
     return render_template('login.html')
 
-    @auth.route('/signup', methods=['GET', 'POST'])
-    def signup():
+@auth.route('/signup', methods=['GET', 'POST'])
+def signup():
         if request.method == 'POST':
             form = request.form
         username = form.get("username")
@@ -80,7 +69,7 @@ def login():
             user.set_password(password)
             user.save()
             return redirect(url_for('auth.login'))
-    return render_template('signup.html')
+        return render_template('signup.html')
 
 
 @auth.route('/logout')
