@@ -17,18 +17,21 @@ bootstap = Bootstrap()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
-photos = UploadSet('photos', IMAGES)
+photos = UploadSet('photos', IMAGES, default_dest=lambda x:"photos") 
 
 
 def create_app(config_name):
     app = Flask(__name__)
     
+
     app.config.from_object(config_options[config_name])
     from .auth import auth as authentication_blueprint
-    from .main import main as main_blueprint
-
+    #from .main import main as main_blueprint
+    from .main.views import landing 
     app.register_blueprint(authentication_blueprint)
-    app.register_blueprint(main_blueprint)
+    #app.register_blueprint(main_blueprint)
+    app.register_blueprint(landing) 
+
 
     login_manager.init_app(app)
     db.init_app(app)

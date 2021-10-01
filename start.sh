@@ -1,3 +1,3 @@
-export SECRET_KEY=<Your secret key>
+# export SECRET_KEY=<Your secret key>
 
-python3.9 manage.py server
+python3.9 manage.py run server 
