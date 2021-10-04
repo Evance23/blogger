@@ -22,6 +22,12 @@ photos = UploadSet('photos', IMAGES, default_dest=lambda x:"photos")
 
 def create_app(config_name):
     app = Flask(__name__)
+
+
+
+    # with app.app_context():
+    #     init_db()
+
     
 
     app.config.from_object(config_options[config_name])
