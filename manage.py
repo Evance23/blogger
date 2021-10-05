@@ -8,7 +8,7 @@ from flask_migrate import Migrate, MigrateCommand
 
 app = create_app('production')
 app.app_context().push() 
-app.config["SQLALCHEMY_DATABASE_URI"]="postgresql+psycopg2://evance:0701003610sue@localhost/Pitch"
+app.config["SQLALCHEMY_DATABASE_URI"]="postgresql+psycopg2://evance:0701003610sue@localhost/pitch2"
 db.init_app(app)
 
 
