@@ -1,44 +1,29 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro %} 
 
+
+
+
+
+   
+
+
+
+
 {% block content %}
 <div class="indexbody">  
-
-
-   
-
-   
-    <h1>The Art of Pitching</h1>
-    <p>Communication is the key to all relationships and the <br>
-        ability to interact with others is embeded in the clarity of our communication</p>
-    <p> The goal is to say the most using the least amount of time</p>
-    <p> Human concetration remains a slippery slope and knowing how to do the one-minute pitch <br>should be the trick
-        that everyone needs</p>
-
-    <hr>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %} 
-   
-    
-    
-
-    <li><a href="/new_post">
-            <span>New Pitch</span>
-            <div class="liquid"></div>
-        </a>
-        <br>
-        <a href="/posts">
-            <span>View Pitch</span>
-            <div class="liquid"></div>
-        </a>
-  
-    
-    </div>
-{% endblock %}
+        <div  class="container" id="particles-js">
+                <h2 class="text-center" id="posts">All Pitches</h2>
+            <ul class="nav nav-pills nav-justified nav-fill" role="tablist">
+                <li class="nav-item" >
+                    <a id ="all" class="nav-link" data-toggle="tab" href="#all"><strong>All Pitches</strong> </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div  class="container tab-pane active" id="all"><br>
+                    {{ macro.display(pitches) }}
+                </div>
+            </div>
+        </div>
+        </div>
+{% endblock%}
