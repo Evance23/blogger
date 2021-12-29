@@ -27,6 +27,7 @@ class DevConfig(Config):
 
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://evance:0701003610sue@localhost/pitch2'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class TestConfig(Config):

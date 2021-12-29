@@ -9,19 +9,19 @@ from flask import Blueprint
 from .forms import PostForm, CommentForm, UpdateProfile
 from ..models import Post, Comment, User, Upvote, Downvote
 
-landing = Blueprint('main', __name__) 
+main = Blueprint('main', __name__) 
 
 
-@landing.route('/')
+@main.route('/')
 def index():
     posts = Post.query.all()
     art = Post.query.filter_by(category='Art').all()
     music = Post.query.filter_by(category='Music').all()
     poetry = Post.query.filter_by(category='Poetry').all()
-    return render_template('index.html', art=art, poetry=poetry, posts=posts)
+    return render_template('index.html', art=art, poetry=poetry, posts=posts) 
 
 
-@landing.route('/posts')
+@main.route('/posts')
 @login_required
 def posts():
     posts = Post.query.all()
@@ -30,7 +30,7 @@ def posts():
     return render_template('pitch_display.html', posts=posts, likes=likes, user=user)
 
 
-@landing.route('/new_post', methods=['GET', 'POST'])
+@main.route('/new_post', methods=['GET', 'POST'])
 @login_required
 def new_post():
     form = PostForm()
@@ -46,11 +46,11 @@ def new_post():
     return render_template('pitch.html', form=form)
 
 
-@landing.route('/user/<uname>/update/pic', methods=['POST'])
+@main.route('/user/<uname>/update/pic', methods=['POST'])
 @login_required
 def update_pic(uname):
     user = User.query.filter_by(username=uname).first()
-    if 'photo' in request.files:
+    if 'photo' in requests.files:
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
         user.profile_pic_path = path
@@ -58,7 +58,7 @@ def update_pic(uname):
     return redirect(url_for('main.profile', uname=uname))
 
 
-@landing.route('/comment/<int:post_id>', methods=['GET', 'POST'])
+@main.route('/comment/<int:post_id>', methods=['GET', 'POST'])
 @login_required
 def comment(post_id):
     form = CommentForm()
@@ -81,7 +81,7 @@ def comment(post_id):
     return render_template('comment.html', form=form, post=post, comments=comments, user=user)
 
 
-@landing.route('/user')
+@main.route('/user')
 @login_required
 def user():
     username = current_user.username
@@ -91,7 +91,7 @@ def user():
     return render_template('profile.html', user=user)
 
 
-@landing.route('/user/<name>/update_profile', methods=['POST', 'GET'])
+@main.route('/user/<name>/update_profile', methods=['POST', 'GET'])
 @login_required
 def updateprofile(name):
     form = UpdateProfile()
@@ -105,7 +105,7 @@ def updateprofile(name):
     return render_template('profile/update_profile.html', form=form)
 
 
-@landing.route('/like/<int:id>', methods=['POST', 'GET'])
+@main.route('/like/<int:id>', methods=['POST', 'GET'])
 @login_required
 def upvote(id):
     post = Post.query.get(id)
@@ -114,7 +114,7 @@ def upvote(id):
     return redirect(url_for('main.posts'))
 
 
-@landing.route('/dislike/<int:id>', methods=['GET', 'POST'])
+@main.route('/dislike/<int:id>', methods=['GET', 'POST'])
 @login_required
 def downvote(id):
     post = Post.query.get(id)

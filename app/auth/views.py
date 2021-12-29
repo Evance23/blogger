@@ -1,7 +1,7 @@
 
 from flask import Flask, render_template, url_for, flash, redirect, request
 from . import auth
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required 
 from ..models import User
 from .. import db
 # from ..email import mail_message
@@ -24,14 +24,17 @@ def index():
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
+        password = login_form.get('password')
         user = User.query.filter_by(email = login_form.email.data).first()
         if user is not None and user.check_password(login_form.password.data):
             login_user(user,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
         flash('Invalid username or Password')
     title = "Pitch login"
-        
     return render_template('auth/login.html',login_form = login_form,title=title)
+
+
+
     # form = LoginForm()
     # if request.method == 'POST':
     #     username = form.get('username')
@@ -62,6 +65,12 @@ def signup():
         db.session.commit()
         return redirect (url_for('auth.login'))
     return render_template('auth/signup.html', registration_form=form)
+
+
+
+
+
+
 
         # print(form)
         # print("atwoli")
