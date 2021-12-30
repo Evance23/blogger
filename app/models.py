@@ -30,15 +30,15 @@ class User(UserMixin, db.Model):
         self.secure_password = generate_password_hash(password)
         
     def check_password(self, password):
-        return check_password_hash(self.password, password)
+        return check_password_hash(self.password, password) 
 
     def __repr__(self):
         return f'User: {self.username}'
 
 
-@login_manager.user_loader
-def user_loader(user_id):
-    return User.query.get(user_id)
+    @login_manager.user_loader
+    def user_loader(user_id):
+        return User.query.get(user_id)
 
 
 class Post(db.Model):

@@ -14,13 +14,32 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    posts = Post.query.all()
-    art = Post.query.filter_by(category='Art').all()
+    pitches = Post.query.all()
+
+
+    # art = Post.query.filter_by(category='Art').all()
+    # music = Post.query.filter_by(category='Music').all()
+    # poetry = Post.query.filter_by(category='Poetry').all()
+    return render_template('index.html',pitches=pitches) 
+
+@main.route('/art')
+def art():
+    arts =  Post.query.filter_by(category='Art').all()
+    return render_template("art.html", arts=arts)
+
+@main.route('/music')
+def music():
     music = Post.query.filter_by(category='Music').all()
-    poetry = Post.query.filter_by(category='Poetry').all()
-    return render_template('index.html', art=art, poetry=poetry, posts=posts) 
+    return render_template ("music.html", music=music)
+
+@main.route('/poetry')
+def poetry():
+    poetries = Post.query.filter_by(category='Poetry').all()
+    return render_template("poetry.html", poetries=poetries) 
+    
 
 
+    
 @main.route('/posts')
 @login_required
 def posts():

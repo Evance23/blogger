@@ -5,7 +5,14 @@
 
 
 {% block content %}
-<div class="indexbody">  
+<div class="indexbody">
+        <ul>
+            <li><a href="{{url_for('main.art')}}">Art</a></li>
+            <li><a href="{{url_for('main.music')}}">Music</a></li>
+            <li><a href="{{url_for('main.poetry')}}">Poetry</a></li>
+            
+        </ul>
+
         <div  class="container" id="particles-js">
                 <h2 class="text-center" id="posts">Pitch it All In A Minute</h2>
             <ul class="nav nav-pills nav-justified nav-fill" role="tablist">
@@ -13,11 +20,17 @@
                     <a id ="all" class="nav-link" data-toggle="tab" href="#all"><strong>All Pitches</strong> </a>
                 </li>
             </ul>
+            {% if pitches%}
+           {% for pitch in pitches %}
             <div class="tab-content">
                 <div  class="container tab-pane active" id="all"><br> 
-                    {{ macro.display(pitches) }}
+                    {{ pitch }}
                 </div>
             </div>
+            {% endfor %}
+            {% else %}
+            There are no posts at the moment
+            {% endif %}
         </div>
         </div>
 {% endblock%}

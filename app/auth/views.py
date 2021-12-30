@@ -3,11 +3,14 @@ from flask import Flask, render_template, url_for, flash, redirect, request
 from . import auth
 from flask_login import login_user, logout_user, login_required 
 from ..models import User
-from .. import db
+from .. import db 
 # from ..email import mail_message
 from .forms import RegistrationForm, LoginForm
 # Views
 app = Flask(__name__)
+
+# user= User
+# psd = user.
 
 
 @app.route('/')
@@ -24,7 +27,7 @@ def index():
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
-        password = login_form.get('password')
+        # password = login_form.get('password')
         user = User.query.filter_by(email = login_form.email.data).first()
         if user is not None and user.check_password(login_form.password.data):
             login_user(user,login_form.remember.data)
