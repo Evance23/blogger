@@ -1,7 +1,7 @@
 
 from . import db ,login_manager
 from datetime import datetime
-from werkzeug.security import generate_password_hash,check_password_hash
+from werkzeug.security import generate_password_hash,check_password_hash 
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage 
 from flask_login import UserMixin , current_user
@@ -23,14 +23,22 @@ class User(UserMixin, db.Model):
 
     @property
     def set_password(self):
-        raise AttributeError('You cannot read the password attribute') 
-
-    @set_password.setter
-    def password(self, password):
-        self.secure_password = generate_password_hash(password)
+        # raise AttributeError('You cannot read the password attribute') 
+        pass 
+    # @set_password.setter
+    # def password(self, password):
+    #     self.secure_password = generate_password_hash(password)
+        
         
     def check_password(self, password):
-        return check_password_hash(self.password, password) 
+        
+        # return check_password_hash(self.password, password) 
+        print(self.email)
+        print(self.password)
+        print(self.id)
+        print(self.username)
+        print(password)
+        return self.password == password
 
     def __repr__(self):
         return f'User: {self.username}'

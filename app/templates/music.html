@@ -2,8 +2,24 @@
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf%}
 
-<section class="container"> 
 
-</section>
 
+
+
+
+{% block content %}
+<h1>Music Pitch </h1>
+{% if music%}
+{% for music in music %}
+<div class="tab-content">
+    <div  class="container tab-pane active" id="all"><br> 
+        {{ music }}
+    </div>
+</div>
+{% endfor %}
+{% else %}
+There are no posts at the moment 
+{% endif %}
+
+{% endblock %}
     

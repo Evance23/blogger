@@ -29,8 +29,9 @@ def login():
     form = LoginForm(csrf_enable=False)
     if login_form.validate_on_submit():
         # password = login_form.get('password')
+        print(form.password.data) 
         user = User.query.filter_by(email = login_form.email.data).first()
-        if user != None and user.verify_password(form.password.data):
+        if user != None and user.check_password(form.password.data):
             login_user(user,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
         flash('Invalid username or Password')

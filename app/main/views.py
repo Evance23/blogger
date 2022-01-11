@@ -20,7 +20,7 @@ def index():
     # art = Post.query.filter_by(category='Art').all()
     # music = Post.query.filter_by(category='Music').all()
     # poetry = Post.query.filter_by(category='Poetry').all()
-    return render_template('index.html',pitches=pitches) 
+    return render_template('index.html',pitches=pitches)
 
 @main.route('/art')
 def art():
