@@ -2,3 +2,19 @@
 {% import 'bootstrap/wtf.html' as wtf%}
 
 
+
+{% block content %}
+<h1>Music Pitch </h1>
+{% if poetry%}
+{% for poetry in poetries %}
+<div class="tab-content">
+    <div  class="container tab-pane active" id="all"><br> 
+        {{ poetries }}
+    </div>
+</div>
+{% endfor %}
+{% else %}
+There are no posts at the moment 
+{% endif %}
+
+{% endblock %}
