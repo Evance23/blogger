@@ -20,7 +20,7 @@ def init_app(app):
 
 class ProdConfig(Config):
 
-    pass
+    SQLALCHEMY_DATABASE_URI = "postgres://qpnqxwnvtfdtrd:2081c16f16ececec2f344970b223797008c3f29d957ebe4c947781b2932fc9b9@ec2-54-208-139-247.compute-1.amazonaws.com:5432/d6nrchh98f5d3e"
 
 
 class DevConfig(Config):
