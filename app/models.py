@@ -58,11 +58,12 @@ class Post(db.Model):
     title = db.Column(db.String, nullable=False)
     user_id = db.Column(db.String, nullable=False)
     post = db.Column(db.String, nullable=False)
-    comment = db.relationship('Comment', backref='post', lazy='dynamic')
+    comment = db.relationship('Comment',  lazy='dynamic')
     category = db.Column(db.String, nullable=False) 
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
-    up_vote = db.relationship('Upvote', backref='post', lazy='dynamic')
-    down_vote = db.relationship('Downvote', backref='post', lazy='dynamic')
+    up_vote = db.relationship('Upvote', lazy='dynamic')
+    down_vote = db.relationship('Downvote', lazy='dynamic')
+    # backref='post' 
 
     def save(self):
         db.session.add(self)
