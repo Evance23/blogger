@@ -1,4 +1,5 @@
 
+from app.main.views import poetry
 from . import db ,login_manager
 from datetime import datetime
 from werkzeug.security import generate_password_hash,check_password_hash 
@@ -48,7 +49,11 @@ class User(UserMixin, db.Model):
     def user_loader(user_id):
         return User.query.get(user_id)
 
-
+class Categories(db.Model):
+    art = db.Column(db.string)
+    music = db.Column(db.string)
+    poetry = db.Column(db.string)
+    
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
@@ -56,7 +61,7 @@ class Post(db.Model):
     user_id = db.Column(db.String, nullable=False)
     post = db.Column(db.String, nullable=False)
     comment = db.relationship('Comment', backref='post', lazy='dynamic')
-    category = db.Column(db.String, nullable=False)
+    category = db.relationship('Categories', backref='get')
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     up_vote = db.relationship('Upvote', backref='post', lazy='dynamic')
     down_vote = db.relationship('Downvote', backref='post', lazy='dynamic')

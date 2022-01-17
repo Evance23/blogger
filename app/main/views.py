@@ -17,24 +17,27 @@ def index():
     pitches = Post.query.all()
 
 
-    # art = Post.query.filter_by(category='Art').all()
-    # music = Post.query.filter_by(category='Music').all()
-    # poetry = Post.query.filter_by(category='Poetry').all()
-    return render_template('index.html',pitches=pitches)
+    art = Post.query.filter_by(category='art').all()
+    music = Post.query.filter_by(category='music').all()
+    poetry = Post.query.filter_by(category='poetry').all()
+    
+    return render_template('index.html',pitches=pitches, art=art, music=music, poetry=poetry)
 
 @main.route('/art')
 def art():
-    arts =  Post.query.filter_by(category='Art').all()
+    arts =  Post.query.filter_by(category='art').all()
+    print(arts)
     return render_template("art.html", arts=arts)
+
 
 @main.route('/music')
 def music():
-    music = Post.query.filter_by(category='Music').all()
+    music = Post.query.filter_by(category='music').all()
     return render_template ("music.html", music=music)
 
 @main.route('/poetry')
 def poetry():
-    poetries = Post.query.filter_by(category='Poetry').all()
+    poetries = Post.query.filter_by(category='poetry').all()
     return render_template("poetry.html", poetries=poetries) 
     
 
