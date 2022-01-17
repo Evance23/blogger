@@ -1,5 +1,3 @@
-
-from app.main.views import poetry
 from . import db ,login_manager
 from datetime import datetime
 from werkzeug.security import generate_password_hash,check_password_hash 

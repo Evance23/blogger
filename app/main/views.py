@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for
 from flask_login import login_required, current_user
 
 from .forms import UpdateProfile
-from .. import db
+# from .. import db
 from .. import db, photos
 from flask import Blueprint 
 
@@ -12,7 +12,7 @@ from ..models import Post, Comment, User, Upvote, Downvote
 main = Blueprint('main', __name__) 
 
 
-@main.route('/')
+@main.route('/') 
 def index():
     pitches = Post.query.all()
 
