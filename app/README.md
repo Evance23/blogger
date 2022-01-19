@@ -1,11 +1,11 @@
 
 
-# Project Name: PITCH 
+# Project Name: Blogosphere
 # About
-Human interaction is influenced by our first impression. The first pitch that someone makes should define the tone of their interactio with their audience.
+This is a platform that enables the users to post blogs and also view posts by others. The goal is to create an environment that pormotes human interaction on the online space
 
 # Description
-This Python-Flask Application allows users to create a one minute pitch. The users will submit their one minute pitches and other users will vote on them and leave comments.
+This Python-Flask Application allows users to create blog posts, read blog posts and also comment on diverse posts by others.
 
 # Languages Used
     . Python
@@ -13,18 +13,20 @@ This Python-Flask Application allows users to create a one minute pitch. The use
     . Flask
     . HTML
     . Bootstrap
+    . Javascript
+    . Font Awesome
+    . SQLAlchemy
+    . PostgreSQL 
 
-# Developer: Evance Barracks 
+# Developer: [Evance Barracks](https://github.com/Evance23/)
 
 # User Stories
 ### The user should be able to:
-    . See the pitches other people have posted.
-    . Vote on the pitch they liked and give it a downvote or upvote.
-    . Sign in
-    . View the pitches I have created in my profile page.
-    . Comment on the different pitches and leave feedback.
-    . Submit a pitch in any category.
-     * view the different categories.
+    . User can view blog posts on the sites
+    . User can see random quotes on the site
+    . User can view the most recent posts
+    . User can subscribe to blog mailing list and receives an email alert when a new post is made.
+    . User can comment on blog posts
 
 
 # Collaboration
@@ -33,7 +35,7 @@ For any collaboration or new ideas, Kindly reach out to me and we plan on the be
 
 
 # Licence
-[MIT](/home/evance/Documents/Pitch/app/LICENCE)
+[MIT](/home/evance/Desktop/blogger/blogs/app/LICENCE)
 
 
 
