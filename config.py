@@ -20,13 +20,13 @@ def init_app(app):
 
 class ProdConfig(Config):
 
-    SQLALCHEMY_DATABASE_URI = "postgresql://qpnqxwnvtfdtrd:2081c16f16ececec2f344970b223797008c3f29d957ebe4c947781b2932fc9b9@ec2-54-208-139-247.compute-1.amazonaws.com:5432/d6nrchh98f5d3e?sslmode=require"
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 
 class DevConfig(Config):
 
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://evance:0701003610sue@localhost/pitch2'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://evance:0701003610sue@localhost/blogbar'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
