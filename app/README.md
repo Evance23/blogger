@@ -35,7 +35,7 @@ For any collaboration or new ideas, Kindly reach out to me and we plan on the be
 
 
 # Licence
-[MIT](/home/evance/Desktop/blogger/blogs/app/LICENCE)
+[MIT](/home/evance/Desktop/blogger/blogs/app/LICENCE) 
 
 
 
